@@ -1,9 +1,10 @@
-%p
-  %strong Name:
-  = @role.name
-%p
-  %strong Description:
-  = @role.description
-= link_to 'Edit', edit_role_path(@role)
-|
-= link_to 'Back', roles_path
+.col-md-6.col-md-offset-3
+  %p
+    %strong Assosciated users:
+    = @assosciated_users
+  %p
+    %strong Description:
+    = @role.description
+  = link_to 'Edit', edit_role_path(@role)
+  |
+  = link_to 'Back', roles_path

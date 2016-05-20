@@ -1,17 +1,20 @@
 %h1 Listing Users
-%table
+%table.table
   %thead
     %tr
       %th Name
+      %th Email
       %th Role
       %th{:colspan => "3"}
   %tbody
     - @users.each do |user|
       %tr
         %td= user.name
-        %td= user.role
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= user.email
+        %td= user.role.name
+        - if !current_user.nil? && current_user.role.name == "admin"
+          %td= link_to 'Show', user
+          %td= link_to 'Edit', edit_user_path(user)
+          %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New User', new_user_path
